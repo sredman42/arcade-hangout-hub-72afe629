@@ -57,6 +57,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        neon: {
+          pink: "hsl(var(--neon-pink))",
+          "pink-glow": "hsl(var(--neon-pink-glow))",
+          gold: "hsl(var(--gold))",
+          "gold-glow": "hsl(var(--gold-glow))",
+        },
+        maroon: "hsl(var(--deep-maroon))",
+      },
+      fontFamily: {
+        orbitron: ["Orbitron", "sans-serif"],
+        rajdhani: ["Rajdhani", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
