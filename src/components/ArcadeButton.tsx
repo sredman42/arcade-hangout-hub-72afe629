@@ -6,6 +6,7 @@ interface ArcadeButtonProps {
   onClick?: () => void;
   variant?: "primary" | "secondary";
   className?: string;
+  disabled?: boolean;
 }
 
 export function ArcadeButton({
@@ -13,10 +14,12 @@ export function ArcadeButton({
   onClick,
   variant = "primary",
   className,
+  disabled = false,
 }: ArcadeButtonProps) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={cn(
         "relative group cursor-pointer transition-all duration-300 ease-out",
         "px-12 py-8 min-w-[280px]",

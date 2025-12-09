@@ -1,19 +1,27 @@
 import { Settings, X, Bug } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ConnectionStatus } from "./ConnectionStatus";
 
 interface SecondaryControlsProps {
   debugMode?: boolean;
+  isConnected?: boolean;
+  isCheckingConnection?: boolean;
   onSettingsClick?: () => void;
   onExitClick?: () => void;
 }
 
 export function SecondaryControls({
   debugMode = false,
+  isConnected = false,
+  isCheckingConnection = false,
   onSettingsClick,
   onExitClick,
 }: SecondaryControlsProps) {
   return (
     <div className="fixed top-6 right-6 flex items-center gap-4 z-50">
+      {/* Backend Connection Status */}
+      <ConnectionStatus isConnected={isConnected} isChecking={isCheckingConnection} />
+
       {/* Debug Indicator */}
       <div
         className={cn(
