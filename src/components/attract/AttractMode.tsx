@@ -14,45 +14,48 @@ interface AttractModeProps {
 /**
  * Attract Mode - Main orchestrator component
  * 
- * Features to implement:
- * 1. Static image display
- * 2. Image carousel (rotate every X seconds)
- * 3. Video interrupt (every 30-45 seconds, then return to images)
- * 4. VR toggle button
- * 5. Exit/Quit button
+ * ============================================
+ * VISUAL DESIGN NOTES
+ * ============================================
  * 
- * State to manage:
- * - currentMode: "static" | "carousel" | "video"
- * - currentImageIndex: number
- * - isVRMode: boolean
- * - isTransitioning: boolean
+ * COLOR PALETTE (optimized for bright workshop + VR):
+ * - Primary: Hot pink/magenta (330° hue) - high visibility
+ * - Secondary: Gold/bronze (40° hue) - warm accent
+ * - Background: Near-black (5% lightness) - maximum contrast
+ * - Text: Pure white on dark, with glow effects
  * 
- * Timers to implement:
- * - Carousel rotation timer
- * - Video interrupt timer
- * - Idle timeout (optional)
+ * TYPOGRAPHY PAIRING:
+ * - Headings/Buttons: font-display (Orbitron) - bold, arcade feel
+ * - Body/Labels: font-body (Rajdhani) - readable, technical
+ * 
+ * SPACING TOKENS:
+ * - Touch targets: min 48px (12 tailwind units)
+ * - Button gaps: 16-24px (4-6 tailwind units)
+ * - Screen padding: 24-56px responsive (6-14 tailwind units)
+ * 
+ * ============================================
+ * STATE PLACEHOLDERS (implement logic later)
+ * ============================================
  */
 export function AttractMode({ className }: AttractModeProps) {
-  // ============================================
-  // STATE PLACEHOLDERS (implement logic later)
-  // ============================================
-  const currentMode: MediaMode = "static"; // TODO: Manage mode switching
-  const currentImageSrc = driftBg1; // TODO: Cycle through images array
-  const videoSrc = ""; // TODO: Add video source
-  const isVRMode = false; // TODO: VR mode toggle state
-  const isTransitioning = false; // TODO: Transition state
+  // STATE PLACEHOLDERS
+  const currentMode: MediaMode = "static";
+  const currentImageSrc = driftBg1;
+  const videoSrc = "";
+  const isVRMode = false;
+  const isTransitioning = false;
 
-  // ============================================
-  // HANDLERS (implement logic later)
-  // ============================================
+  // HANDLER PLACEHOLDERS
   const handleToggleVR = () => {
-    // TODO: Toggle VR mode, call API
     console.log("Toggle VR Mode");
   };
 
   const handleExit = () => {
-    // TODO: Exit application, call shutdown API
     console.log("Exit Application");
+  };
+
+  const handleSettings = () => {
+    console.log("Open Settings");
   };
 
   return (
@@ -60,6 +63,8 @@ export function AttractMode({ className }: AttractModeProps) {
       className={cn(
         "relative w-full h-screen overflow-hidden",
         "bg-background",
+        // Ensure crisp rendering
+        "antialiased",
         className
       )}
     >
@@ -69,6 +74,7 @@ export function AttractMode({ className }: AttractModeProps) {
         currentImageSrc={currentImageSrc}
         videoSrc={videoSrc}
         isTransitioning={isTransitioning}
+        showControlsBlur={true}
       />
 
       {/* Controls Overlay */}
@@ -76,6 +82,17 @@ export function AttractMode({ className }: AttractModeProps) {
         isVRMode={isVRMode}
         onToggleVR={handleToggleVR}
         onExit={handleExit}
+        onSettings={handleSettings}
+        showSettings={false}
+      />
+
+      {/* Scanline effect overlay (subtle CRT feel) */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, hsl(var(--foreground) / 0.1) 2px, hsl(var(--foreground) / 0.1) 4px)",
+          backgroundSize: "100% 4px"
+        }}
       />
     </div>
   );
