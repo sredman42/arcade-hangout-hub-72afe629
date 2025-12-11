@@ -66,6 +66,8 @@ export default {
         maroon: "hsl(var(--deep-maroon))",
       },
       fontFamily: {
+        display: ["Orbitron", "sans-serif"],
+        body: ["Rajdhani", "sans-serif"],
         orbitron: ["Orbitron", "sans-serif"],
         rajdhani: ["Rajdhani", "sans-serif"],
       },
@@ -74,22 +76,18 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        "attract-primary": "0 0 30px hsl(var(--primary) / 0.5), 0 0 60px hsl(var(--primary) / 0.3)",
+        "attract-secondary": "0 0 20px hsl(var(--secondary) / 0.5), 0 0 40px hsl(var(--secondary) / 0.3)",
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
